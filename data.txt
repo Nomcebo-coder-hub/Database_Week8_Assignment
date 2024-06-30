@@ -1,0 +1,36 @@
+Interesting Thing:
+One interesting observation is the variety of genres and formats in the dataset. For instance, the dataset includes movies, TV shows, documentaries, and reality TV, spanning across multiple countries and catering to diverse audiences.
+Data Fun (20 pts)
+Cool Facts:
+1.	Most Frequent Rating:
+SELECT rating, COUNT(*) as count
+FROM dataset
+GROUP BY rating
+ORDER BY count DESC
+LIMIT 1;
+Finding: The most frequent rating in the dataset is TV-MA.
+
+Average Duration of Movies:
+
+SELECT AVG(CAST(SUBSTRING(duration, 1, LENGTH(duration)-4) AS INT)) as avg_duration
+FROM dataset
+WHERE type = 'Movie';
+
+Finding: The average duration of movies in the dataset is around 102 minutes
+
+Ask Away (30 pts)
+Questions and SQL Queries:
+1.	Popular Shows by Country:
+SELECT country, COUNT(*) as count
+FROM dataset
+WHERE type = 'TV Show'
+GROUP BY country
+ORDER BY count DESC;
+Learning: The dataset has the most TV shows from the United States.
+
+2.	Recent Additions:
+SELECT title, date_added
+FROM dataset
+WHERE date_added >= 'September 1, 2021'
+ORDER BY date_added DESC;
+Learning: Many shows and movies were added to the dataset in late September 2021, indicating a high rate of content updates.
